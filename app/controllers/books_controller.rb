@@ -1,5 +1,7 @@
 class BooksController < ApplicationController
+  # 一覧画面
   def index
+    @books = Book.all
   end
 
   def show
