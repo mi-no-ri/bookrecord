@@ -18,7 +18,8 @@ ActiveRecord::Schema[7.2].define(version: 2026_07_14_155047) do
     t.date "finished_on"
     t.integer "reading_status"
     t.integer "acquisition_type"
-    t.integer "medium"
+    t.boolean "paper", default: false, null: false
+    t.boolean "ebook", default: false, null: false
     t.text "memo"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

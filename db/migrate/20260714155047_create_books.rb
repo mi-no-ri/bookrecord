@@ -7,7 +7,8 @@ class CreateBooks < ActiveRecord::Migration[7.2]
       t.date :finished_on
       t.integer :reading_status
       t.integer :acquisition_type
-      t.integer :medium
+      t.boolean :paper, default: false, null: false
+      t.boolean :ebook, default: false, null: false
       t.text :memo
 
       t.timestamps
