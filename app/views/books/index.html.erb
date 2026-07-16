@@ -1,2 +1,42 @@
+<div id="wrap">
+<h1>わたしの本棚</h1>
+    <h2>書籍一覧</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>タイトル</th>
+                <th>著者</th>
+                <th>読書状況</th>
+                <th>入手方法</th>
+                <th>媒体</th>
+                <th></th>
+            </tr>
+        </thead>
 
-
+        <tbody>
+            <% @books.each do |book| %>
+            <tr>
+                <td><%= book.title %></td>
+                <td><%= book.author %></td>
+                <td><%= book.reading_status %></td>
+                <td><%= book.acquisition_type %></td>
+                <td><%= book.medium %></td>
+                <%# <td><%=  %></td>
+                <td><%=  %></td>
+                <td><%=  %></td>
+                <td><%=  %></td> %>
+            </tr>
+            <% end %>
+        </tbody>
+    </table>
+    </div>
+    <div id="bottom">
+        <div id="bottom-inner">
+            <div id="number-of-books">
+                <p>読了：冊</p>
+                <p>読書中：冊</p>
+                <p>未読：冊</p>
+            </div>
+            <%# <%= link_to "新規追加",%> %>
+        </div>
+    </div>
