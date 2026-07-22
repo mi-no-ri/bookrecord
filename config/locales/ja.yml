@@ -11,6 +11,6 @@ ja:
 
       # acquisition_typeの表示名
       acquisition_type:
-      not_owned: "未入手"
-      purchase: "購入"
-      borrowed: "借りた"
+        not_owned: "未入手"
+        purchase: "購入"
+        borrowed: "借りた"

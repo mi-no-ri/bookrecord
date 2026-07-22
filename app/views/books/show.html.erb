@@ -51,5 +51,6 @@
     <div>
         <%= link_to "一覧に戻る", books_path %>
         <%= link_to "編集", edit_book_path(@book) %>
+        <%= link_to "削除", @book, data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？"} %>
     </div>
 </div>

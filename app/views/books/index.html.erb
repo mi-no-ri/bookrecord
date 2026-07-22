@@ -14,21 +14,31 @@
         </thead>
 
         <tbody>
+            <%# 登録されている書籍を1件ずつ一覧表示 %>
             <% @books.each do |book| %>
             <tr>
                 <td><%= book.title %></td>
                 <td><%= book.author %></td>
-                <td><%= book.reading_status %></td>
-                <td><%= book.acquisition_type %></td>
+
+                <%# reading_statusのenumをja.ymlから取得し、日本語で表示 %>
+                <td>
+                    <%= t "enums.book.reading_status.#{book.reading_status}" %>
+                </td>
+                
+                <%# acquisition_typeのenumをja.ymlから取得し、日本語で表示 %>
+                <td>
+                    <%= t "enums.book.acquisition_type.#{book.acquisition_type}" %>
+                </td>
+
+                <%# nilを除外し、媒体を「/」区切りで表示 %>
                 <td>
                     <%= [("紙書籍" if book.paper),
                     ("電子書籍" if book.ebook)
                     ].compact.join("/") %>
                 </td>
-                <td><%= link_to "詳細", book %>
-                </td>
-                <td><%=  %></td>
-                <td><%=  %></td>
+
+                <%# 書籍の詳細画面へ移行 %>
+                <td><%= link_to "詳細", book %></td>
             </tr>
             <% end %>
         </tbody>
@@ -36,11 +46,16 @@
     </div>
     <div id="bottom">
         <div id="bottom-inner">
+
+            <%# 読書状況ごとの冊数を表示 %>
             <div id="number-of-books">
                 <p>読了：冊</p>
                 <p>読書中：冊</p>
                 <p>未読：冊</p>
             </div>
-            <%= link_to "新規追加", :new_book %>
+
+
+            <%# 新規登録画面へ移行 %>
+            <%= link_to "新規追加", new_book_path %>
         </div>
     </div>
