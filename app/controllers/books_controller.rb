@@ -2,6 +2,9 @@ class BooksController < ApplicationController
   # 一覧画面
   def index
     @books = Book.all
+    @not_owned_count = Book.not_owned.count
+    @purchase_count = Book.purchase.count
+    @borrowed_count = Book.borrowed.count
   end
 
   # 詳細画面

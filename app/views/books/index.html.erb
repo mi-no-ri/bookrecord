@@ -49,9 +49,9 @@
 
             <%# 読書状況ごとの冊数を表示 %>
             <div id="number-of-books">
-                <p>読了：冊</p>
-                <p>読書中：冊</p>
-                <p>未読：冊</p>
+                <p>読了：<%= @borrowed_count %>冊</p>
+                <p>読書中：<%= @purchase_count %>冊</p>
+                <p>未読：<%= @not_owned_count %>冊</p>
             </div>
 
 
