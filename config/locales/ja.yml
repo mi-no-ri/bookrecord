@@ -1,0 +1,16 @@
+# 日本語の翻訳設定
+ja:
+  # Bookモデルのenumの表示名を定義
+  enums:
+    book:
+      # reading_statusの表示名
+      reading_status:
+        unread: "未読"
+        reading: "読書中"
+        finished: "読了"
+
+      # acquisition_typeの表示名
+      acquisition_type:
+      not_owned: "未入手"
+      purchase: "購入"
+      borrowed: "借りた"

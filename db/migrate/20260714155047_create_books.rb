@@ -1,9 +1,9 @@
 class CreateBooks < ActiveRecord::Migration[7.2]
   def change
     create_table :books do |t|
-      # 必須項目のためNULLを保存しない項目にはnull: falseを記述
+      # 値が必ず存在する項目はNULLを許可しない
       t.string :title, null: false
-      t.string :author
+      t.string :author, null: false
       t.date :started_on
       t.date :finished_on
       t.integer :reading_status, null: false

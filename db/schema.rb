@@ -13,7 +13,7 @@
 ActiveRecord::Schema[7.2].define(version: 2026_07_14_155047) do
   create_table "books", force: :cascade do |t|
     t.string "title", null: false
-    t.string "author"
+    t.string "author", null: false
     t.date "started_on"
     t.date "finished_on"
     t.integer "reading_status", null: false

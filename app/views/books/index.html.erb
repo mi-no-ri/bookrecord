@@ -20,11 +20,15 @@
                 <td><%= book.author %></td>
                 <td><%= book.reading_status %></td>
                 <td><%= book.acquisition_type %></td>
-                <td><%= book.medium %></td>
-                <%# <td><%=  %></td>
+                <td>
+                    <%= [("紙書籍" if book.paper),
+                    ("電子書籍" if book.ebook)
+                    ].compact.join("/") %>
+                </td>
+                <td><%= link_to "詳細", book %>
+                </td>
                 <td><%=  %></td>
                 <td><%=  %></td>
-                <td><%=  %></td> %>
             </tr>
             <% end %>
         </tbody>
@@ -37,6 +41,6 @@
                 <p>読書中：冊</p>
                 <p>未読：冊</p>
             </div>
-            <%# <%= link_to "新規追加",%> %>
+            <%= link_to "新規追加", :new_book %>
         </div>
     </div>

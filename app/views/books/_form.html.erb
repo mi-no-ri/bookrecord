@@ -50,11 +50,11 @@
             </tr>
             <tr>
                 <th>読書期間</th>
-                <td><%= form.date_field :started_on %>
-                    <%= form.label :started_on, "開始日" %>
+                <td><%= form.label :started_on, "開始日" %>
+                    <%= form.date_field :started_on %>
 
-                    <%= form.date_field :finished_on %>
                     <%= form.label :finished_on, "終了日" %>
+                    <%= form.date_field :finished_on %>
                 </td>
             </tr>
             <tr>
@@ -63,6 +63,6 @@
             </tr>
         </table>
         <%= form.submit "登録" %>
-        <%= link_to "キャンセル", :books %>
+        <%= link_to "キャンセル", :book %>
     <% end %>
 </div>
