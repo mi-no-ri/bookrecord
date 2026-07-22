@@ -3,8 +3,21 @@
 
     <%# 新規登録画面(new)・編集画面(edit)から渡されたbookを使ってフォームを作成 %>
     <%= form_with model: book do |form| %>
+    <%# エラーメッセージ表示 %>
+    <% if @book.errors.any? %>
+    <div class="error_messages">
+        <ul>
+            <% @book.errors.full_messages.each do |msg| %>
+                <li>
+                    <%= msg %>
+                </li>
+            <% end %>
+        </ul>
+    </div>
+    <% end %>
 
-        <table>
+
+        <table id="form_table">
             <tr>
                 <th><%= form.label :title, "タイトル" %></th>
                 <td><%= form.text_field :title %></td>
@@ -51,12 +64,10 @@
             <tr>
                 <th>読書期間</th>
                 <td>
-                    <p><%= form.label :started_on, "開始日" %>
-                        <%= form.date_field :started_on %>
-                    </p>    
-                    <p><%= form.label :finished_on, "終了日" %>
-                        <%= form.date_field :finished_on %>
-                    </p>
+                    <%= form.label :started_on, "開始日" %>
+                    <%= form.date_field :started_on %>   
+                    <%= form.label :finished_on, "終了日" %>
+                    <%= form.date_field :finished_on %>
                 </td>
             </tr>
             <tr>
@@ -64,7 +75,9 @@
                 <td><%= form.text_area :memo %></td>
             </tr>
         </table>
-        <%= form.submit "登録" %>
-        <%= link_to "キャンセル", books_path %>
+        <div class="button_box">
+            <%= form.submit "登録", class:"button" %>
+            <%= link_to "キャンセル", books_path, class:"button" %>
+        </div>
     <% end %>
 </div>

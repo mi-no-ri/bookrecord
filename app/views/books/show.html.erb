@@ -1,7 +1,7 @@
 <div class="wrap">
 <h1>わたしの本棚</h1>
 
-    <table>
+    <table id="show_table">
         <tr>
             <th>タイトル</th>
             <td><%= @book.title %></td>
@@ -37,7 +37,7 @@
         <tr>
             <th>読書期間</th>
             <td>
-                <p>開始日：<%= @book.started_on %></p>
+                <p class="started_day">開始日：<%= @book.started_on %></p>
                 <p>終了日：<%= @book.finished_on %></p>
             </td>
         </tr>
@@ -48,9 +48,9 @@
         </tr>
     </table>
 
-    <div>
-        <%= link_to "一覧に戻る", books_path %>
-        <%= link_to "編集", edit_book_path(@book) %>
-        <%= link_to "削除", @book, data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？"} %>
+    <div class="button_box">
+        <%= link_to "編集", edit_book_path(@book), class:"button" %>
+        <%= link_to "一覧に戻る", books_path, class:"button" %>
+        <%= link_to "削除", @book, class:"button", data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？"} %>
     </div>
 </div>
