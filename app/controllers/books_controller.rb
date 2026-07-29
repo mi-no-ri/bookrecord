@@ -2,7 +2,51 @@ class BooksController < ApplicationController
   before_action :require_login
   # 一覧画面
   def index
-    @books = current_user.books
+  # ログインしているユーザーが登録した書籍を取得する
+  @books = current_user.books
+
+  # 検索ワードが入力されている場合
+  if params[:keyword].present?
+    # タイトルまたは著者にキーワードを含む本を取得する
+    @books = @books.where(
+      "title LIKE ? OR author LIKE ?",
+      # 検索対象が2つあるため
+      "%#{params[:keyword]}%",
+      "%#{params[:keyword]}%"
+    )
+  end
+
+  # 読書状況が選択されている場合
+  if params[:reading_status].present?
+    # 選択された読書状況の本だけに絞り込む
+    @books = @books.where(
+      reading_status: params[:reading_status]
+    )
+  end
+
+  # 入手方法が選択されている場合
+  if params[:acquisition_type].present?
+    # 選択された入手方法の本だけに絞り込む
+    @books = @books.where(
+      acquisition_type: params[:acquisition_type]
+    )
+  end
+
+  # 媒体が選択されている場合
+  if params[:medium].present?
+
+    # 紙書籍が選択された場合
+    if params[:medium] == "paper"
+      # paperがtrueの本だけを取得する
+      @books = @books.where(paper: true)
+    # 電子書籍が選択された場合
+    elsif params[:medium] == "ebook"
+      # ebookがtrueの本だけを取得する
+      @books = @books.where(ebook: true)
+    end
+  end
+
+    # 読書状況ごとの冊数のカウント
     @unread_count = current_user.books.unread.count
     @reading_count = current_user.books.reading.count
     @finished_count = current_user.books.finished.count

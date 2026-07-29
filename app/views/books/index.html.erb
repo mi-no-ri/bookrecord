@@ -1,7 +1,42 @@
 <div class="wrap">
 <h1>わたしの本棚</h1>
 <%= link_to "ログアウト", logout_path, class:"button logout_button", data: { turbo_method: :delete } %>
-    <h2>書籍一覧</h2>
+
+    <%# 検索フォーム %>
+    <%= form_with url: books_path, id:"search_form", method: :get, local: true do |form| %>
+        <%= form.search_field :keyword, placeholder: " タイトル / 著者名で検索" %>
+        <div class="pull_down_menu">
+            <p>読書状況</p>
+            <%= form.select :reading_status,
+                [["すべて", ""],
+                ["読了", "finished"],
+                ["読書中", "reading"],
+                ["未読", "unread"]],
+                {},
+                class:"drop_down_menu" %>
+        </div>
+        <div class="pull_down_menu">
+            <p>入手方法</p>
+            <%= form.select :acquisition_type,
+                [["すべて", ""],
+                ["購入", "purchase"],
+                ["借りた", "borrowed"],
+                ["未入手", "not_owned"]],
+                {},
+                class:"drop_down_menu" %>
+        </div>
+        <div class="pull_down_menu">
+            <p>媒体</p>
+            <%= form.select :medium,
+                [["すべて", ""],
+                ["紙書籍", "paper"],
+                ["電子書籍", "ebook"]],
+                {},
+                class:"drop_down_menu" %>
+        </div>
+        <%= form.submit "検索", class:"button" %>
+    <% end %>
+    
     <div id="table_container">
     <table id="index_table">
         <thead>
@@ -10,7 +45,12 @@
                 <th>著者</th>
                 <th>読書状況</th>
                 <th>入手方法</th>
-                <th>媒体</th>
+                <th>
+                    <p>媒体</p>
+                    <%= form_with url: books_path, method: :get, local: true do |form| %>
+
+                    <% end %>
+                </th>
                 <th></th>
             </tr>
         </thead>

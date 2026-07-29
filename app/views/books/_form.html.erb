@@ -8,7 +8,7 @@
     <% if @book.errors.any? %>
     <div class="error_messages">
         <ul>
-            <% @book.errors.full_messages.each do |msg| %>
+            <% book.errors.full_messages.each do |msg| %>
                 <li>
                     <%= msg %>
                 </li>
@@ -29,44 +29,46 @@
             </tr>
             <tr>
                 <th><%= form.label :reading_status, "読書状況" %></th>
-                <td><%= form.radio_button :reading_status, "finished" %>
-                    <%= form.label :reading_status_finished, "読了" %>
+                <td>
+                    <%= form.radio_button :reading_status, "finished" %>
+                    <%= form.label :reading_status_finished, "読了", class:"radio_button_label" %>
 
                     <%= form.radio_button :reading_status, "reading" %>
-                    <%= form.label :reading_status_reading, "読書中" %>
+                    <%= form.label :reading_status_reading, "読書中", class:"radio_button_label" %>
 
                     <%= form.radio_button :reading_status, "unread" %>
-                    <%= form.label :reading_status_unread, "未読" %>
+                    <%= form.label :reading_status_unread, "未読", class:"radio_button_label" %>
                 </td>
             </tr>
             <tr>
                 <th><%= form.label :acquisition_type, "入手方法" %></th>
                 <td>
                     <%= form.radio_button :acquisition_type, "purchase" %>
-                    <%= form.label :acquisition_type_purchase, "購入" %>
+                    <%= form.label :acquisition_type_purchase, "購入", class:"radio_button_label" %>
 
                     <%= form.radio_button :acquisition_type, "borrowed" %>
-                    <%= form.label :acquisition_type_borrowed, "借りた" %>
+                    <%= form.label :acquisition_type_borrowed, "借りた", class:"radio_button_label" %>
 
                     <%= form.radio_button :acquisition_type, "not_owned" %>
-                    <%= form.label :acquisition_type_not_owned, "未入手" %>
+                    <%= form.label :acquisition_type_not_owned, "未入手", class:"radio_button_label" %>
                 </td>
             </tr>
             <tr>
                 <th>媒体</th>
                 <td>
                     <%= form.check_box :paper %>
-                    <%= form.label :paper, "紙書籍" %>
+                    <%= form.label :paper, "紙書籍", class:"check_box_label" %>
 
                     <%= form.check_box :ebook %>
-                    <%= form.label :ebook, "電子書籍" %>
+                    <%= form.label :ebook, "電子書籍", class:"check_box_label" %>
                 </td>
             </tr>
             <tr>
                 <th>読書期間</th>
                 <td>
+                    <div id="date_box">
                     <%= form.label :started_on, "開始日" %>
-                    <%= form.date_field :started_on %>   
+                    <%= form.date_field :started_on, class:"started_date_field" %>   
                     <%= form.label :finished_on, "終了日" %>
                     <%= form.date_field :finished_on %>
                 </td>
