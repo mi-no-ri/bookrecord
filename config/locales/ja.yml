@@ -15,7 +15,9 @@ ja:
         purchase: "購入"
         borrowed: "借りた"
 
+  # 日本語表示設定
   activerecord:
+    # モデルの属性名を日本語で表示
     attributes:
       book:
         title: "タイトル"
@@ -25,10 +27,21 @@ ja:
         finished_on: "終了日"
         memo: "メモ"
 
+      user:
+        email: "メールアドレス"
+        password: "パスワード"
+        password_confirmation: "パスワード(確認用)"
+
+  # バリデーションエラーメッセージの設定
   errors:
+    # エラーメッセージの表示形式（項目名 + メッセージ）
     format: "%{attribute}%{message}"
 
+    # 各バリデーションの日本語メッセージ
     messages:
       invalid: "が正しくありません"
       blank: "を入力してください"
       too_long: "は%{count}文字以下で入力してください"
+      too_short: "は%{count}文字以上で入力してください"
+      taken: "はすでに登録されています"
+      confirmation: "が一致しません"

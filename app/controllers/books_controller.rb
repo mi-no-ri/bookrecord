@@ -1,25 +1,26 @@
 class BooksController < ApplicationController
+  before_action :require_login
   # 一覧画面
   def index
-    @books = Book.all
-    @not_owned_count = Book.not_owned.count
-    @purchase_count = Book.purchase.count
-    @borrowed_count = Book.borrowed.count
+    @books = current_user.books
+    @unread_count = current_user.books.unread.count
+    @reading_count = current_user.books.reading.count
+    @finished_count = current_user.books.finished.count
   end
 
   # 詳細画面
   def show
-    @book = Book.find(params[:id])
+    @book = current_user.books.find(params[:id])
   end
 
   # 新規登録画面
   def new
-    @book = Book.new
+    @book = current_user.books.new
   end
 
   # 書籍を登録
   def create
-    @book = Book.new(book_params)
+    @book = current_user.books.new(book_params)
 
     if @book.save
       # 登録成功時は詳細画面へ移行
@@ -32,11 +33,11 @@ class BooksController < ApplicationController
 
   # 編集画面
   def edit
-    @book = Book.find(params[:id])
+    @book = current_user.books.find(params[:id])
   end
   # 書籍情報を更新
   def update
-    @book = Book.find(params[:id])
+    @book = current_user.books.find(params[:id])
 
     if @book.update(book_params)
       # 更新成功時は詳細画面へ移行
@@ -49,7 +50,7 @@ class BooksController < ApplicationController
 
   # 書籍を削除
   def destroy
-    @book = Book.find(params[:id])
+    @book = current_user.books.find(params[:id])
     @book.destroy
 
     # 削除後、一覧画面へ移行
@@ -60,6 +61,16 @@ class BooksController < ApplicationController
 
   # フォームから送信されたbookデータのうち、保存を許可する項目
   def book_params
-        params.require(:book).permit(:title, :author, :started_on, :finished_on, :reading_status, :acquisition_type, :paper, :ebook, :memo)
+    params.require(:book).permit(
+      :title,
+      :author,
+      :started_on,
+      :finished_on,
+      :reading_status,
+      :acquisition_type,
+      :paper,
+      :ebook,
+      :memo
+    )
   end
 end

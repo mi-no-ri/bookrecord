@@ -1,5 +1,6 @@
 <div class="wrap">
 <h1>わたしの本棚</h1>
+<%= link_to "ログアウト", logout_path, class:"button logout_button", data: { turbo_method: :delete } %>
     <h2>書籍一覧</h2>
     <div id="table_container">
     <table id="index_table">
@@ -45,19 +46,19 @@
         </tbody>
     </table>
     </div>
-    </div>
-    <div id="bottom">
-        <div id="bottom-inner">
+</div>
+<div id="bottom">
+    <div id="bottom-inner">
 
-            <%# 読書状況ごとの冊数を表示 %>
-            <div id="number-of-books">
-                <p>読了：<%= @purchase_count %>冊</p>
-                <p>読書中：<%= @borrowed_count %>冊</p>
-                <p>未読：<%= @not_owned_count %>冊</p>
-            </div>
-
-
-            <%# 新規登録画面へ移行 %>
-                <%= link_to "新規追加", new_book_path, class:"button new_book_button" %>
+        <%# 読書状況ごとの冊数を表示 %>
+        <div id="number-of-books">
+            <p>読了：<%= @finished_count %>冊</p>
+            <p>読書中：<%= @reading_count %>冊</p>
+            <p>未読：<%= @unread_count %>冊</p>
         </div>
+
+
+        <%# 新規登録画面へ移行 %>
+            <%= link_to "新規追加", new_book_path, class:"button new_book_button" %>
     </div>
+</div>
