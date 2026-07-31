@@ -1,0 +1,358 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.wrap {
+  background-color: #f5ecd2;
+  color: #51331b;
+  min-height: 100vh;
+  padding-bottom: 100px;
+}
+
+h1 {
+  text-align: center;
+  font-size: 25px;
+  font-weight: 400;
+  background-color: #603d20;
+  color: #f5ecd2;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.button {
+  text-decoration: none;
+  background-color: #8b6748;
+  color: #faf5e8;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+
+.logout_button {
+  position: absolute;
+  right: 30px;
+  top: 12px;
+  font-size: 15px;
+  background-color: #f5ecd2;
+  color: #603d20;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+#search_form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+#search_form input[type="search"] {
+  height: 30px;
+  width: 300px;
+  border: solid 1px #51331b;
+  border-radius: 3px;
+  margin-right: 10px;
+}
+
+.pull_down_menu {
+  text-align: center;
+  margin-right: 10px;
+}
+
+.pull_down_menu p {
+  font-size: 15px;
+}
+
+#search_form select {
+  border: solid 1px #51331b;
+  border-radius: 3px;
+  color: #51331b;
+  height: 25px;
+  width: 65px;
+}
+
+#search_form input:focus[type="search"],
+#search_form select:focus {
+  border: solid 2px #51331b;
+  outline: none;
+}
+
+#search_form input[type="submit"] {
+  padding: 5px;
+  border-radius: 5px;
+}
+
+#table_container {
+  overflow-x: auto;
+  margin: 0 50px;
+}
+
+table {
+  margin: auto;
+  font-size: 17px;
+  background-color: #faf5e8;
+  /* 改行しない */
+  white-space: nowrap;
+}
+
+#index_table {
+  /* 隣り合うセルの枠線を1本にまとめる */
+  border-collapse: collapse;
+  width: 100%;
+  max-width: 1800px;
+}
+
+#index_table td:first-child {
+  /* 改行を許可する */
+  white-space: normal;
+  /* 長い単語もセル内で折り返す */
+  overflow-wrap: break-word;
+  max-width: 500px;
+}
+
+#index_table td:nth-child(2) {
+  /* 改行を許可する */
+  white-space: normal;
+  /* 長い単語もセル内で折り返す */
+  overflow-wrap: break-word;
+  max-width: 250px;
+}
+
+#index_table th {
+  padding: 15px 30px;
+  border-bottom: solid 5px #f5ecd2;
+}
+
+#index_table td {
+  padding: 20px 30px;
+  border-bottom: solid 3px #f5ecd2;
+  font-size: 16px;
+}
+
+#index_table tr:last-child td {
+  border-bottom: none;
+}
+
+#bottom {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #603d20;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+#bottom-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  max-width: 900px;
+  margin: auto;
+}
+
+#number-of-books {
+  display: flex;
+  gap: 50px;
+  font-size: 20px;
+  font-weight: 400;
+  color: #f5ecd2;
+}
+
+#index_table .button {
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.new_book_button {
+  font-size: 20px;
+  background-color: #f5ecd2;
+  color: #603d20;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+/* ここからフォーム・詳細画面 */
+.error_messages {
+  text-align: center;
+  margin-top: 30px;
+}
+
+#form_table {
+  margin-top: 30px;
+  width: 600px;
+}
+
+#show_table {
+  margin-top: 30px;
+  width: 600px;
+  table-layout: fixed;
+}
+
+#form_table th,
+#show_table th {
+  padding: 20px 30px;
+  border-bottom: solid 3px #f5ecd2;
+  border-right: solid 3px #f5ecd2;
+}
+
+#form_table td,
+#show_table td {
+  padding: 20px 30px;
+  border-bottom: solid 3px #f5ecd2;
+  font-size: 16px;
+}
+
+#show_table tr:first-child td,
+#show_table tr:nth-child(2) td {
+  white-space: normal;
+  overflow-wrap: break-word;
+  width: 450px;
+}
+
+#form_table tr:last-child th,
+#form_table tr:last-child td,
+#show_table tr:last-child th,
+#show_table tr:last-child td {
+  border-bottom: none;
+}
+
+.radio_button_label,
+.check_box_label,
+.started_date_field {
+  margin-right: 15px;
+}
+
+.started_day {
+  padding-bottom: 10px;
+}
+
+#form_table input,
+#form_table textarea {
+  border: solid 1px #51331b;
+  border-radius: 3px;
+}
+
+#form_table input:focus,
+#form_table textarea:focus {
+  border: solid 2px #51331b;
+  outline: none;
+}
+
+#form_table input[type="text"] {
+  height: 30px;
+  width: 300px;
+}
+
+#date_box {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+#form_table input[type="date"] {
+  height: 25px;
+  font-size: 15px;
+  color: #51331b;
+}
+
+#form_table textarea {
+  height: 150px;
+  width: 300px;
+}
+
+.button_box {
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.button_box {
+  max-width: 500px;
+}
+
+.button_box .button {
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 15px;
+}
+
+#memo_area {
+  white-space: normal;
+  overflow-wrap: break-word;
+}
+
+/* ここからユーザー登録・ログイン画面 */
+#users_new_container,
+#sessions_new_container {
+  margin: 30px auto 10px;
+  width: 560px;
+  background-color: #faf5e8;
+}
+
+#users_new_table th,
+#sessions_new_table th,
+#users_new_table td,
+#sessions_new_table td {
+  padding: 20px 30px;
+}
+
+#users_new_table input,
+#sessions_new_table input {
+  height: 25px;
+  width: 250px;
+  border: solid 1px #51331b;
+  border-radius: 3px;
+}
+
+#users_new_table input:focus,
+#sessions_new_table input:focus {
+  height: 25px;
+  width: 250px;
+  border: solid 2px #51331b;
+  outline: none;
+}
+
+#login_button_box,
+#new_user_submit_button_box {
+  text-align: center;
+}
+
+.login_button {
+  padding: 10px;
+  border-radius: 10px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.new_user_submit_button {
+  padding: 10px 20px;
+  border-radius: 10px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.link_box {
+  width: 560px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 30px;
+  padding-left: 30px;
+}
+
+#new_user_link,
+#guest_login_link {
+  display: inline-block;
+  color: #51331b;
+  font-size: 15px;
+}

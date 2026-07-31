@@ -1,0 +1,39 @@
+<div class="wrap">
+<h1>わたしの本棚</h1>
+
+    <%= form_with model: @user do |form| %>
+
+    <% if @user.errors.any? %>
+    <div class="error_messages">
+        <ul>
+            <% @user.errors.full_messages.each do |msg| %>
+                <li>
+                    <%= msg %>
+                </li>
+            <% end %>
+        </ul>
+    </div>
+    <% end %>
+
+    <div id="users_new_container">
+        <table id="users_new_table">
+            <tr>
+                <th><%= form.label :email, "メールアドレス" %></th>
+                <td><%= form.email_field :email %></td>
+            </tr>
+            <tr>
+                <th><%= form.label :password, "パスワード" %></th>
+                <td><%= form.password_field :password, placeholder: " 8～16文字で入力してください" %></td>
+            </tr>
+            <tr>
+                <th><%= form.label :password_confirmation, "パスワード（確認）" %></th>
+                <td><%= form.password_field :password_confirmation, placeholder: " もう一度入力してください" %></td>
+            </tr>
+        </table>
+
+        <div id="new_user_submit_button_box">
+        <%= form.submit "登録", class:"button new_user_submit_button" %>
+        </div>
+    </div>
+    <% end %>
+</div>

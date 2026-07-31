@@ -1,0 +1,104 @@
+<div class="wrap">
+<h1>わたしの本棚</h1>
+<%= link_to "ログアウト", logout_path, class:"button logout_button", data: { turbo_method: :delete } %>
+
+    <%# 検索フォーム %>
+    <%= form_with url: books_path, id:"search_form", method: :get, local: true do |form| %>
+        <%= form.search_field :keyword, placeholder: " タイトル / 著者名で検索" %>
+        <div class="pull_down_menu">
+            <p>読書状況</p>
+            <%= form.select :reading_status,
+                [["すべて", ""],
+                ["読了", "finished"],
+                ["読書中", "reading"],
+                ["未読", "unread"]],
+                {},
+                class:"drop_down_menu" %>
+        </div>
+        <div class="pull_down_menu">
+            <p>入手方法</p>
+            <%= form.select :acquisition_type,
+                [["すべて", ""],
+                ["購入", "purchase"],
+                ["借りた", "borrowed"],
+                ["未入手", "not_owned"]],
+                {},
+                class:"drop_down_menu" %>
+        </div>
+        <div class="pull_down_menu">
+            <p>媒体</p>
+            <%= form.select :medium,
+                [["すべて", ""],
+                ["紙書籍", "paper"],
+                ["電子書籍", "ebook"]],
+                {},
+                class:"drop_down_menu" %>
+        </div>
+        <%= form.submit "検索", class:"button" %>
+    <% end %>
+    
+    <div id="table_container">
+    <table id="index_table">
+        <thead>
+            <tr>
+                <th>タイトル</th>
+                <th>著者</th>
+                <th>読書状況</th>
+                <th>入手方法</th>
+                <th>
+                    <p>媒体</p>
+                    <%= form_with url: books_path, method: :get, local: true do |form| %>
+
+                    <% end %>
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <%# 登録されている書籍を1件ずつ一覧表示 %>
+            <% @books.each do |book| %>
+            <tr>
+                <td><%= book.title %></td>
+                <td><%= book.author %></td>
+
+                <%# reading_statusのenumをja.ymlから取得し、日本語で表示 %>
+                <td>
+                    <%= t "enums.book.reading_status.#{book.reading_status}" %>
+                </td>
+                
+                <%# acquisition_typeのenumをja.ymlから取得し、日本語で表示 %>
+                <td>
+                    <%= t "enums.book.acquisition_type.#{book.acquisition_type}" %>
+                </td>
+
+                <%# nilを除外し、媒体を「/」区切りで表示 %>
+                <td>
+                    <%= [("紙書籍" if book.paper),
+                    ("電子書籍" if book.ebook)
+                    ].compact.join("/") %>
+                </td>
+
+                <%# 書籍の詳細画面へ移行 %>
+                <td><%= link_to "詳細", book, class:"button" %></td>
+            </tr>
+            <% end %>
+        </tbody>
+    </table>
+    </div>
+</div>
+<div id="bottom">
+    <div id="bottom-inner">
+
+        <%# 読書状況ごとの冊数を表示 %>
+        <div id="number-of-books">
+            <p>読了：<%= @finished_count %>冊</p>
+            <p>読書中：<%= @reading_count %>冊</p>
+            <p>未読：<%= @unread_count %>冊</p>
+        </div>
+
+
+        <%# 新規登録画面へ移行 %>
+            <%= link_to "新規追加", new_book_path, class:"button new_book_button" %>
+    </div>
+</div>
