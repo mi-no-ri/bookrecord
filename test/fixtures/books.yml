@@ -10,6 +10,7 @@ one:
   paper: true
   ebook: false
   memo: MyText
+  user: one
 
 two:
   title: MyString
@@ -21,3 +22,4 @@ two:
   paper: false
   ebook: true
   memo: MyText
+  user: two
