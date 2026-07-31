@@ -95,12 +95,31 @@ table {
   margin: auto;
   font-size: 17px;
   background-color: #faf5e8;
+  /* 改行しない */
   white-space: nowrap;
 }
 
 #index_table {
+  /* 隣り合うセルの枠線を1本にまとめる */
   border-collapse: collapse;
+  width: 100%;
   max-width: 1800px;
+}
+
+#index_table td:first-child {
+  /* 改行を許可する */
+  white-space: normal;
+  /* 長い単語もセル内で折り返す */
+  overflow-wrap: break-word;
+  max-width: 500px;
+}
+
+#index_table td:nth-child(2) {
+  /* 改行を許可する */
+  white-space: normal;
+  /* 長い単語もセル内で折り返す */
+  overflow-wrap: break-word;
+  max-width: 250px;
 }
 
 #index_table th {
@@ -164,10 +183,15 @@ table {
   margin-top: 30px;
 }
 
-#form_table,
+#form_table {
+  margin-top: 30px;
+  width: 600px;
+}
+
 #show_table {
   margin-top: 30px;
   width: 600px;
+  table-layout: fixed;
 }
 
 #form_table th,
@@ -182,6 +206,13 @@ table {
   padding: 20px 30px;
   border-bottom: solid 3px #f5ecd2;
   font-size: 16px;
+}
+
+#show_table tr:first-child td,
+#show_table tr:nth-child(2) td {
+  white-space: normal;
+  overflow-wrap: break-word;
+  width: 450px;
 }
 
 #form_table tr:last-child th,
