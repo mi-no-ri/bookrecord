@@ -87,7 +87,9 @@ jobs:
       - name: Run tests
         env:
           RAILS_ENV: test
-          # REDIS_URL: redis://localhost:6379/0
+          PGHOST: localhost
+          PGUSER: postgres
+          PGPASSWORD: password
         run: bin/rails db:test:prepare test test:system
 
       - name: Keep screenshots from failed system tests
