@@ -84,6 +84,11 @@ jobs:
           ruby-version: .ruby-version
           bundler-cache: true
 
+      - name: Check Rails version
+        run: |
+          bundle exec rails -v
+          bundle list | grep rails
+
       - name: Run tests
         env:
           RAILS_ENV: test
