@@ -46,3 +46,30 @@
 ## 5.工夫した点
 検索機能を充実させました。<br>
 本のタイトル、著者だけでなく読書状況・入手方法・媒体も含めて検索することができます。
+
+## 6.ER図
+
+```mermaid
+erDiagram
+
+  users ||--o{ books :registers
+
+users {
+  bigint id PK
+  string email
+  string password_digest
+}
+
+books {
+  bigint id PK
+  bigint user_id FK
+  string title
+  string author
+  date started_on
+  date finished_on
+  integer reading_status
+  integer acquisition_type
+  boolean paper
+  boolean ebook
+  text memo
+}
