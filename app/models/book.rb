@@ -2,6 +2,7 @@ class Book < ApplicationRecord
 validates :title, presence: true
 validates :author, presence: true
 validates :reading_status, presence: true
+validates :acquisition_type, presence: true
 validates :memo, length: { maximum: 1000 }
 validate :finished_after_started
 

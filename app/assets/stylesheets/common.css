@@ -111,6 +111,7 @@ table {
   white-space: normal;
   /* 長い単語もセル内で折り返す */
   overflow-wrap: break-word;
+  min-width: 300px;
   max-width: 500px;
 }
 
@@ -119,7 +120,7 @@ table {
   white-space: normal;
   /* 長い単語もセル内で折り返す */
   overflow-wrap: break-word;
-  max-width: 250px;
+  width: 250px;
 }
 
 #index_table th {
