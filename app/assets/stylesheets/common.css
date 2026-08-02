@@ -202,7 +202,15 @@ table {
   border-right: solid 3px #f5ecd2;
 }
 
-#form_table td,
+#form_table td {
+  padding: 20px 30px;
+  border-bottom: solid 3px #f5ecd2;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
 #show_table td {
   padding: 20px 30px;
   border-bottom: solid 3px #f5ecd2;
@@ -248,12 +256,6 @@ table {
 #form_table input[type="text"] {
   height: 30px;
   width: 300px;
-}
-
-#date_box {
-  display: flex;
-  align-items: center;
-  gap: 5px;
 }
 
 #form_table input[type="date"] {
