@@ -103,7 +103,7 @@ table {
   /* 隣り合うセルの枠線を1本にまとめる */
   border-collapse: collapse;
   width: 100%;
-  max-width: 1800px;
+  max-width: 1200px;
 }
 
 #index_table td:first-child {
@@ -120,7 +120,14 @@ table {
   white-space: normal;
   /* 長い単語もセル内で折り返す */
   overflow-wrap: break-word;
-  width: 250px;
+  min-width: 150px;
+  max-width: 250px;
+}
+
+#index_table td:nth-child(2),
+#index_table td:nth-child(3),
+#index_table td:last-child {
+  text-align: center;
 }
 
 #index_table th {
