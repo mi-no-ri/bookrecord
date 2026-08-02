@@ -23,6 +23,7 @@ ja:
         title: "タイトル"
         author: "著者"
         reading_status: "読書状況"
+        acquisition_type: "入手方法"
         started_on: "開始日"
         finished_on: "終了日"
         memo: "メモ"
