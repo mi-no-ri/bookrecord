@@ -286,8 +286,10 @@ table {
 }
 
 #memo_area {
-  white-space: normal;
+  /* 長い単語をセル内で折り返す */
   overflow-wrap: break-word;
+  /* 入力された改行をそのまま表示し、自動で折り返す */
+  white-space: pre-wrap;
 }
 
 /* ここからユーザー登録・ログイン画面 */
